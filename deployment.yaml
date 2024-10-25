@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: surveyform-deployment
+  labels:
+    app: form
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: form
+  template:
+    metadata:
+      labels:
+        app: form
+    spec:
+      containers:
+        - name: form-container
+          image: ramya0602/form:{{IMAGE_TAG}}
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: dockerkey

@@ -1,0 +1,132 @@
+/* 
+    Arsitha Sathu
+    G01445215 
+*/
+
+/* CSS file styles the student survey form, including the layout for the container, form elements, and buttons.
+It adds padding, borders, and rounded corners to form inputs, with hover effects for buttons.
+Required fields are marked . */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eff0e7;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 70%;
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #005239;
+  text-transform: uppercase;
+}
+
+.survey-form {
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #005239;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 0.4rem;
+}
+
+select {
+  width: 104%;
+  padding: 0.8rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 0.4rem;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+select option {
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+  font-size: small;
+}
+
+textarea {
+  resize: vertical;
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+h4 {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #005239;
+}
+
+label input[type="checkbox"],
+label input[type="radio"] {
+  margin-right: 1rem;
+}
+
+.required-field::after {
+  content: "*";
+  color: red;
+}
+
+.form-actions {
+  text-align: center;
+}
+
+button {
+  background-color: #005239;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0.5rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: small;
+}
+
+button[type="reset"] {
+  background-color: #fec734;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
+.footer {
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #555;
+  border-top: 1px solid #ddd;
+}

@@ -1,0 +1,114 @@
+<!-- 
+    Arsitha Sathu
+    G01445215
+-->
+
+<!-- Student Survey form with various input fields including text, checkboxes, radio buttons, and dropdowns.
+It uses fieldsets to group related form elements and includes required fields.
+The form also features a submit and cancel button at the end for form actions. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Survey Form</title>
+    <link rel="stylesheet" href="form.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Student Survey Form</h2>
+      <form>
+        <div class="survey-form">
+          <label for="firstName" class="required-field">First Name </label>
+          <input type="text" id="firstName" name="firstName" required />
+        </div>
+        <div class="survey-form">
+          <label for="lastName" class="required-field">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required />
+        </div>
+        <div class="survey-form">
+          <label for="streetAddress" class="required-field"
+            >Street Address</label
+          >
+          <input type="text" id="streetAddress" name="streetAddress" required />
+        </div>
+        <div class="survey-form">
+          <label for="city" class="required-field">City</label>
+          <input type="text" id="city" name="city" required />
+        </div>
+        <div class="survey-form">
+          <label for="zip" class="required-field">Zip Code</label>
+          <input type="text" id="zip" name="zip" required />
+        </div>
+        <div class="survey-form">
+          <label for="telephone" class="required-field">Telephone Number</label>
+          <input type="tel" id="telephone" name="telephone" required />
+        </div>
+        <div class="survey-form">
+          <label for="email" class="required-field">e-mail</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="survey-form">
+          <label for="surveyDate" class="required-field">Date of Survey</label>
+          <input type="date" id="surveyDate" name="surveyDate" required />
+        </div>
+
+        <fieldset>
+          <h4>What aspects of the campus did you like the most?</h4>
+          <label><input type="checkbox" value="students" /> Students</label>
+          <label><input type="checkbox" value="location" /> Location</label>
+          <label><input type="checkbox" value="campus" /> Campus</label>
+          <label><input type="checkbox" value="atmosphere" /> Atmosphere</label>
+          <label><input type="checkbox" value="dorm_rooms" /> Dorm Rooms</label>
+          <label><input type="checkbox" value="sports" /> Sports</label>
+        </fieldset>
+
+        <fieldset>
+          <h4>Why are you interested in this university?</h4>
+          <label><input type="radio" value="friends" required /> Friends</label>
+          <label><input type="radio" value="television" /> Television</label>
+          <label><input type="radio" value="internet" /> Internet</label>
+          <label><input type="radio" value="other" /> Other</label>
+        </fieldset>
+
+        <div class="survey-form">
+          <h4 for="recommend">How likely are you to recommend this school?</h4>
+          <select id="recommend">
+            <option value="very_likely">Very Likely</option>
+            <option value="likely">Likely</option>
+            <option value="unlikely">Unlikely</option>
+          </select>
+        </div>
+
+        <div class="survey-form">
+          <h4 for="raffle">
+            Raffle (Enter at least ten comma-separated numbers from 1 to 100):
+          </h4>
+          <input
+            type="text"
+            id="raffle"
+            name="raffle"
+            pattern="\d{1,2}(,\s*\d{1,2}){9,}"
+            title="Enter at least ten numbers that are comma-separated ranging from 1 to 100."
+            required
+          />
+        </div>
+
+        <div class="survey-form">
+          <h4 for="comments">Additional Comments:</h4>
+          <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
+        </div>
+
+        <div class="form-buttons">
+          <button type="submit">Submit</button>
+          <button type="reset">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="footer">
+      Copyright &copy; 2024 Arsitha Sathu. All rights reserved.
+    </div>
+  </body>
+</html>
