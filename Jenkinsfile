@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_CREDENTIALS = credentials('docker-pass') // reading docker credentials from jenkins
-        KUBECONFIG_CREDENTIALS = credentials('kubeconfig-id')  // reading k8s credentials from jenkins
+        KUBECONFIG_CREDENTIALS = credentials('kuberntes-id')  // reading k8s credentials from jenkins
         IMAGE_TAG = "${env.BUILD_ID}"  // Set IMAGE_TAG to the Jenkins build ID
     }
 
