@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: form-container
-          image: ramya0602/form:{{IMAGE_TAG}}
+          image: ramya0602/form:${IMAGE_TAG}
           ports:
             - containerPort: 80
       imagePullSecrets:
