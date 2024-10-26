@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        IMAGE_TAG = "${env.BUILD_ID}"  // Set IMAGE_TAG to the Jenkins build ID
+        IMAGE_TAG = "${env.BUILD_ID}"  
     }
 
     stages {
