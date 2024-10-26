@@ -39,8 +39,8 @@ pipeline {
                         //echo "Updating the docker image: ramya0602/form:${env.IMAGE_TAG}"
                         sh """
                         kubectl set image deployment/surveyform-deployment form-container=ramya0602/form:${env.IMAGE_TAG} -n default --record
-                        sh 'cat surveyform-deployment.yaml'
                         kubectl rollout status deployment/surveyform-deployment -n default
+                        sh 'kubectl get deployment surveyform-deployment -o yaml'
                         """
                         sh 'kubectl apply -f service.yaml'
  
