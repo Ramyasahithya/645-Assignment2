@@ -1,8 +1,6 @@
 pipeline {
     agent any
     environment {
-        DOCKER_CREDENTIALS = credentials('docker-pass') // Reading Docker credentials from Jenkins
-        KUBECONFIG_CREDENTIALS = credentials('kuberntes-id')  // Reading k8s credentials from Jenkins
         IMAGE_TAG = "${env.BUILD_ID}"  // Set IMAGE_TAG to the Jenkins build ID
     }
 
@@ -37,22 +35,13 @@ pipeline {
         stage('Update Deployment YAML and Deploy') {
             steps {
                 script {
-                    // Set image in deployment
-                    sh "kubectl set image deployment/surveyform-deployment form-container=ramya0602/form:${env.IMAGE_TAG} -n default"
+                    withCredentials([file(credentialsId: 'kuberntes-id', variable: 'KUBECONFIG')]) {
+                        sh "kubectl set image deployment/surveyform-deployment form-container=ramya0602/form:${env.IMAGE_TAG} -n default"
+                        
+                        sh 'kubectl apply -f deployment.yaml'
 
-                    // Uncomment if using `envsubst` to update the YAML file dynamically
-                    // sh 'envsubst < deployment.yaml > deployment-updated.yaml'
-
-                    // Verify the updated deployment YAML file
-                    sh 'cat deployment-updated.yaml'
-
-                    // Apply the updated deployment.yaml to Kubernetes
-                    sh '''
-                    kubectl --kubeconfig=$KUBECONFIG_CREDENTIALS apply -f deployment-updated.yaml
-                    '''
-
-                    // Uncomment to apply the service YAML as well
-                    // sh 'kubectl --kubeconfig=$KUBECONFIG_CREDENTIALS apply -f service.yaml'
+                        sh 'kubectl apply -f service.yaml'
+                    }
                 }
             }
         }
