@@ -42,8 +42,7 @@ pipeline {
                         kubectl rollout status deployment/surveyform-deployment -n default
                         """
                         sh 'kubectl apply -f service.yaml'
-
-                        echo 
+ 
                     }
                 }
             }
