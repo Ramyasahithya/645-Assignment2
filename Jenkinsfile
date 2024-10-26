@@ -40,7 +40,7 @@ pipeline {
 
                         sh """
                         kubectl set image deployment/surveyform-deployment form-container=ramya0602/form:${env.IMAGE_TAG} -n default --record
-                        kubectl rollout status deployment/surveyform-deployment -n defaul
+                        kubectl rollout status deployment/surveyform-deployment -n default
                         """
                         sh 'kubectl apply -f service.yaml'
  
