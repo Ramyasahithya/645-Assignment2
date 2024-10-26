@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([file(credentialsId: 'kuberntes-id', variable: 'KUBECONFIG')]) {
-                        // updating the image tag in deployment and apply the new deployment using rollout
+                        
                         sh """
                         kubectl set image deployment/surveyform-deployment form-container=ramya0602/form:${env.IMAGE_TAG} -n default --record
                         kubectl rollout status deployment/surveyform-deployment -n default
