@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        DOCKER_CREDENTIALS = credentials('docker-pass') // reading docker credentials from jenkins
-        KUBECONFIG_CREDENTIALS = credentials('kuberntes-id')  // reading k8s credentials from jenkins
+        DOCKER_CREDENTIALS = credentials('docker-pass') // Reading Docker credentials from Jenkins
+        KUBECONFIG_CREDENTIALS = credentials('kubernetes-id')  // Reading k8s credentials from Jenkins
         IMAGE_TAG = "${env.BUILD_ID}"  // Set IMAGE_TAG to the Jenkins build ID
     }
 
@@ -12,13 +12,13 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/Ramyasahithya/645-Assignment2'
             }
         }
+
         stage('Build Docker Image') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'docker-pass', passwordVariable: 'DOCKER_PSW', usernameVariable: 'DOCKER_USR')]) {
-                        sh 'echo $DOCKER_PSW | docker login -u $DOCKER_USR --password-stdin'
+                    withCredentials([usernamePassword(credentialsId: 'docker-pass', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PSW')]) {
+                        sh 'echo $DOCKER_PSW | docker login -u $DOCKER_USER --password-stdin'
                     }
-
                     image = docker.build("ramya0602/form:${env.IMAGE_TAG}")
                 }
             }
@@ -37,21 +37,22 @@ pipeline {
         stage('Update Deployment YAML and Deploy') {
             steps {
                 script {
+                    // Set image in deployment
                     sh "kubectl set image deployment/surveyform-deployment form-container=ramya0602/form:${env.IMAGE_TAG} -n default"
-                    //sh 'envsubst < deployment.yaml > deployment-updated.yaml'
 
-                    // cat command to check if the deployment-updated.yaml is updated with the latest version of image
+                    // Uncomment if using `envsubst` to update the YAML file dynamically
+                    // sh 'envsubst < deployment.yaml > deployment-updated.yaml'
+
+                    // Verify the updated deployment YAML file
                     sh 'cat deployment-updated.yaml'
 
-                    // Apply the updated deployment.yaml to Kubernetes (Rancher)
+                    // Apply the updated deployment.yaml to Kubernetes
                     sh '''
                     kubectl --kubeconfig=$KUBECONFIG_CREDENTIALS apply -f deployment-updated.yaml
                     '''
 
-                    // applying the service.yaml
-                    /*sh '''
-                    kubectl --kubeconfig=$KUBECONFIG_CREDENTIALS apply -f service.yaml
-                    '''*/
+                    // Uncomment to apply the service YAML as well
+                    // sh 'kubectl --kubeconfig=$KUBECONFIG_CREDENTIALS apply -f service.yaml'
                 }
             }
         }
