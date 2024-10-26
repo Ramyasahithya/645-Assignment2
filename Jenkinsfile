@@ -36,11 +36,11 @@ pipeline {
             steps {
                 script {
                     withCredentials([file(credentialsId: 'kuberntes-id', variable: 'KUBECONFIG')]) {
-                        //echo "Updating the docker image: ramya0602/form:${env.IMAGE_TAG}"
+                        echo "Updating the docker image: ramya0602/form:${env.IMAGE_TAG}"
+
                         sh """
                         kubectl set image deployment/surveyform-deployment form-container=ramya0602/form:${env.IMAGE_TAG} -n default --record
-                        kubectl rollout status deployment/surveyform-deployment -n default
-                        sh 'kubectl get deployment surveyform-deployment -o yaml'
+                        kubectl rollout status deployment/surveyform-deployment -n defaul
                         """
                         sh 'kubectl apply -f service.yaml'
  
