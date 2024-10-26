@@ -27,7 +27,7 @@ body {
 h2 {
   text-align: center;
   color: #005239;
-  text-transform: uppercase;
+  text-transform: lowercase;
 }
 
 .survey-form {
