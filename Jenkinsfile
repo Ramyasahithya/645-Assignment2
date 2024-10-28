@@ -1,3 +1,13 @@
+// Ramyasahithya Magani - G01425752
+// Arsitha Sathu - G01445215
+// Athiksha Venkannagari - G01461169
+// Sreshta Kosaraju - G01460468
+
+// Jenkinsfile defines Jenkins pipeline automatomation process of building and deploying a Docker image for a Kubernetes application.
+// It clones the repository, builds and pushes the Docker image to Docker Hub, and updates the Kubernetes deployment to use the new image. 
+// Finally, it provides success or failure notifications based on the pipeline's execution results.
+
+
 pipeline {
     agent any
     environment {

@@ -1,3 +1,12 @@
+# Ramyasahithya Magani - G01425752
+# Arsitha Sathu - G01445215
+# Athiksha Venkannagari - G01461169
+# Sreshta Kosaraju - G01460468
+
+# kubeconfig defines a cluster named 'form' with its API server endpoint specified. 
+# It includes a user with a token for authentication and establishes a context that associates the user with the cluster, 
+# allowing seamless interaction with the Kubernetes API.
+
 apiVersion: v1
 kind: Config
 clusters:

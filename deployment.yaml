@@ -1,3 +1,12 @@
+# Ramyasahithya Magani - G01425752
+# Arsitha Sathu - G01445215
+# Athiksha Venkannagari - G01461169
+# Sreshta Kosaraju - G01460468
+
+# Kubernetes deployment.yaml file defines a replica set of three instances of the form-container application,
+# using the specified Docker image and exposing port 80. 
+# It also includes an image pull secret named dockerkey for accessing private images.
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:

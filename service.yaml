@@ -1,3 +1,13 @@
+# Ramyasahithya Magani - G01425752
+# Arsitha Sathu - G01445215
+# Athiksha Venkannagari - G01461169
+# Sreshta Kosaraju - G01460468
+
+
+# service.yaml file has form-service that exposes the application with a NodePort type, 
+# allowing external access to the application on ports 8080(HTTP) and 443(HTTPS).
+# It routes traffic to pods labeled with app:form, targeting port 80 within those pods.
+
 apiVersion: v1
 kind: Service
 metadata:
